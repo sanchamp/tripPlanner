@@ -42,7 +42,7 @@ interface CurrencyProviderProps {
 }
 
 export const CurrencyProvider: React.FC<CurrencyProviderProps> = ({ children }) => {
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currencies[0]); // Default to USD
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(currencies[8]); // Default to INR
 
   const convertPrice = (usdPrice: number): string => {
     const convertedPrice = usdPrice * selectedCurrency.rate;
