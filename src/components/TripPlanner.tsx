@@ -378,9 +378,9 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                     onChange={(e) => setTripDetails({...tripDetails, budget: e.target.value})}
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
-                    <option value="budget">Budget ($50-100/day)</option>
-                    <option value="medium">Medium ($100-300/day)</option>
-                    <option value="luxury">Luxury ($300+/day)</option>
+                    <option value="budget">Budget ({formatPrice(50)}-{formatPrice(100)}/day)</option>
+                    <option value="medium">Medium ({formatPrice(100)}-{formatPrice(300)}/day)</option>
+                    <option value="luxury">Luxury ({formatPrice(300)}+/day)</option>
                   </select>
                 </div>
               </div>
