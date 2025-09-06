@@ -166,7 +166,6 @@ const About: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {team.map((member, index) => (
               <div key={index} className="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 text-center">
