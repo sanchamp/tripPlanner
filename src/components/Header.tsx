@@ -1,6 +1,7 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 import CurrencySelector from './CurrencySelector';
+import ThemeToggle from './ThemeToggle';
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -13,7 +14,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation,
   const isActive = (view: string) => currentView === view;
 
   return (
-    <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <button 
@@ -29,41 +30,42 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation,
                 <path d="M8.5 10.5l2-2.5 3 4 4.5-6L22 16H2l6.5-5.5z"/>
               </svg>
             </div>
-            <span className="text-xl font-bold text-gray-900">TRIPPING</span>
+            <span className="text-xl font-bold text-gray-900 dark:text-white">TRIPPING</span>
           </button>
           
           <nav className="hidden md:flex space-x-8">
             <button 
               onClick={() => onNavigation('home')}
-              className={`transition-colors ${isActive('home') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`transition-colors ${isActive('home') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               Home
             </button>
             <button 
               onClick={() => onNavigation('destinations')}
-              className={`transition-colors ${isActive('destinations') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`transition-colors ${isActive('destinations') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               Destinations
             </button>
             <button 
               onClick={() => onNavigation('mytrips')}
-              className={`transition-colors ${isActive('mytrips') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`transition-colors ${isActive('mytrips') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               My Trips
             </button>
             <button 
               onClick={() => onNavigation('about')}
-              className={`transition-colors ${isActive('about') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`transition-colors ${isActive('about') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               About
             </button>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <CurrencySelector />
             <button 
               onClick={() => onNavigation('signin')}
-              className={`transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               Sign In
             </button>
@@ -76,7 +78,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation,
           </div>
 
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-gray-700 dark:text-gray-300"
             onClick={onMenuToggle}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -85,45 +87,48 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation,
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
           <div className="px-4 py-2 space-y-2">
             <button 
               onClick={() => onNavigation('home')}
-              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('home') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('home') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               Home
             </button>
             <button 
               onClick={() => onNavigation('destinations')}
-              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('destinations') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('destinations') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               Destinations
             </button>
             <button 
               onClick={() => onNavigation('mytrips')}
-              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('mytrips') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('mytrips') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               My Trips
             </button>
             <button 
               onClick={() => onNavigation('about')}
-              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('about') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('about') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
             >
               About
             </button>
-            <div className="border-t border-gray-200 pt-2 mt-2">
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
+              <div className="px-3 py-2">
+                <ThemeToggle />
+              </div>
               <div className="px-3 py-2">
                 <CurrencySelector />
               </div>
               <button 
                 onClick={() => onNavigation('signin')}
-                className={`block w-full text-left px-3 py-2 transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+                className={`block w-full text-left px-3 py-2 transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 dark:text-gray-300 hover:text-blue-600'}`}
               >
                 Sign In
               </button>
               <button 
                 onClick={() => onNavigation('signin')}
-                className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 mt-2"
+                className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors mt-2"
               >
                 Get Started
               </button>

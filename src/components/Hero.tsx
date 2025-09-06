@@ -16,8 +16,8 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
   };
 
   return (
-    <div className="relative bg-gradient-to-br from-blue-50 via-purple-50 to-teal-50 min-h-[600px] flex items-center">
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+    <div className="relative bg-gradient-to-br from-blue-50 via-purple-50 to-teal-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 min-h-[600px] flex items-center">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 dark:from-blue-500/20 dark:to-purple-500/20"></div>
       
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-3xl mx-auto">
@@ -29,6 +29,7 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
             Plan Your Perfect Trip with{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               TRIPPING
@@ -36,6 +37,7 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
           </h1>
           
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
             Discover hidden gems, create personalized itineraries, and get recommendations 
             tailored just for you. Your dream vacation is just a search away.
           </p>
@@ -47,12 +49,12 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Where would you like to go?"
-                className="w-full px-6 py-4 text-lg rounded-full border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent pl-14 shadow-lg"
+                className="w-full px-6 py-4 text-lg rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:border-transparent pl-14 shadow-lg"
               />
               <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <button
                 type="submit"
-                className="absolute right-2 top-2 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors"
+                className="absolute right-2 top-2 bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors shadow-md"
               >
                 Plan Trip
               </button>
@@ -67,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
                   setSearchQuery(destination);
                   onStartPlanning(destination);
                 }}
-                className="px-4 py-2 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-full text-gray-700 hover:bg-white hover:shadow-md transition-all"
+                className="px-4 py-2 bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-gray-200 dark:border-gray-600 rounded-full text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:shadow-md transition-all"
               >
                 {destination}
               </button>

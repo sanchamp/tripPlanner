@@ -30,13 +30,14 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Why Choose TRIPPING?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Experience the future of travel planning with our AI-powered platform 
             that makes creating your perfect trip effortless and enjoyable.
           </p>
@@ -46,17 +47,19 @@ const Features: React.FC = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="text-center group hover:transform hover:scale-105 transition-transform duration-200"
+              className="text-center group hover:transform hover:scale-105 transition-all duration-200"
             >
               <div className="mb-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-50 rounded-full group-hover:bg-gray-100 transition-colors">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-50 dark:bg-gray-800 rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-700 transition-colors">
                   <feature.icon className={`h-8 w-8 ${feature.color}`} />
                 </div>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 {feature.title}
               </h3>
               <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {feature.description}
               </p>
             </div>

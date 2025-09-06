@@ -15,19 +15,21 @@ const CurrencySelector: React.FC = () => {
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+        className="flex items-center space-x-2 px-3 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
       >
         <span className="text-sm font-medium text-gray-600">{selectedCurrency.symbol}</span>
         <span className="text-sm font-medium text-gray-700">
+        <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
           {selectedCurrency.code}
         </span>
         <ChevronDown className={`h-4 w-4 text-gray-600 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+        <div className="absolute right-0 mt-2 w-64 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-lg z-50">
           <div className="p-2">
             <div className="text-xs font-medium text-gray-500 px-3 py-2 border-b border-gray-100">
+            <div className="text-xs font-medium text-gray-500 dark:text-gray-400 px-3 py-2 border-b border-gray-100 dark:border-gray-700">
               Select Currency
             </div>
             <div className="max-h-60 overflow-y-auto">
@@ -35,15 +37,15 @@ const CurrencySelector: React.FC = () => {
                 <button
                   key={currency.code}
                   onClick={() => handleCurrencySelect(currency)}
-                  className={`w-full flex items-center justify-between px-3 py-2 text-sm hover:bg-gray-50 transition-colors ${
-                    selectedCurrency.code === currency.code ? 'bg-blue-50 text-blue-700' : 'text-gray-700'
+                  className={`w-full flex items-center justify-between px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors ${
+                    selectedCurrency.code === currency.code ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300'
                   }`}
                 >
                   <div className="flex items-center space-x-3">
                     <span className="font-medium">{currency.symbol}</span>
                     <div>
-                      <div className="font-medium">{currency.code}</div>
-                      <div className="text-xs text-gray-500">{currency.name}</div>
+                      <div className="font-medium text-gray-900 dark:text-gray-100">{currency.code}</div>
+                      <div className="text-xs text-gray-500 dark:text-gray-400">{currency.name}</div>
                     </div>
                   </div>
                   {selectedCurrency.code === currency.code && (

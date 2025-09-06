@@ -32,7 +32,7 @@ function App() {
     setIsMenuOpen(false); // Close mobile menu when navigating
   };
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors">
       <Header 
         onMenuToggle={handleMenuToggle} 
         isMenuOpen={isMenuOpen} 
