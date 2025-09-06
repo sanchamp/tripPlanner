@@ -4,14 +4,21 @@ import { Menu, X } from 'lucide-react';
 interface HeaderProps {
   onMenuToggle: () => void;
   isMenuOpen: boolean;
+  onNavigation: (view: 'home' | 'destinations' | 'mytrips' | 'about' | 'signin') => void;
+  currentView: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen }) => {
+const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation, currentView }) => {
+  const isActive = (view: string) => currentView === view;
+
   return (
     <header className="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-2">
+          <button 
+            onClick={() => onNavigation('home')}
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <div className="h-8 w-8 text-blue-600">
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-8 w-8">
                 <path d="M14 6l-4.22 5.63 1.25 1.67L14 9.33 19 16h-4l-1 4 4-4h4l-8-10z"/>
@@ -22,18 +29,46 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen }) => {
               </svg>
             </div>
             <span className="text-xl font-bold text-gray-900">TRIPPING</span>
-          </div>
+          </button>
           
           <nav className="hidden md:flex space-x-8">
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Home</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">Destinations</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">My Trips</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 transition-colors">About</a>
+            <button 
+              onClick={() => onNavigation('home')}
+              className={`transition-colors ${isActive('home') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => onNavigation('destinations')}
+              className={`transition-colors ${isActive('destinations') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Destinations
+            </button>
+            <button 
+              onClick={() => onNavigation('mytrips')}
+              className={`transition-colors ${isActive('mytrips') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              My Trips
+            </button>
+            <button 
+              onClick={() => onNavigation('about')}
+              className={`transition-colors ${isActive('about') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              About
+            </button>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-gray-700 hover:text-blue-600 transition-colors">Sign In</button>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+            <button 
+              onClick={() => onNavigation('signin')}
+              className={`transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Sign In
+            </button>
+            <button 
+              onClick={() => onNavigation('signin')}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            >
               Get Started
             </button>
           </div>
@@ -50,13 +85,41 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen }) => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="px-4 py-2 space-y-2">
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600">Destinations</a>
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600">My Trips</a>
-            <a href="#" className="block px-3 py-2 text-gray-700 hover:text-blue-600">About</a>
+            <button 
+              onClick={() => onNavigation('home')}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('home') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Home
+            </button>
+            <button 
+              onClick={() => onNavigation('destinations')}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('destinations') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              Destinations
+            </button>
+            <button 
+              onClick={() => onNavigation('mytrips')}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('mytrips') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              My Trips
+            </button>
+            <button 
+              onClick={() => onNavigation('about')}
+              className={`block w-full text-left px-3 py-2 transition-colors ${isActive('about') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+            >
+              About
+            </button>
             <div className="border-t border-gray-200 pt-2 mt-2">
-              <button className="block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600">Sign In</button>
-              <button className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 mt-2">
+              <button 
+                onClick={() => onNavigation('signin')}
+                className={`block w-full text-left px-3 py-2 transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
+              >
+                Sign In
+              </button>
+              <button 
+                onClick={() => onNavigation('signin')}
+                className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 mt-2"
+              >
                 Get Started
               </button>
             </div>
