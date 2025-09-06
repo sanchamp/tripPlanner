@@ -63,7 +63,10 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
             {['Tokyo, Japan', 'Paris, France', 'Bali, Indonesia', 'New York, USA'].map((destination) => (
               <button
                 key={destination}
-                onClick={() => onStartPlanning(destination)}
+                onClick={() => {
+                  setSearchQuery(destination);
+                  onStartPlanning(destination);
+                }}
                 className="px-4 py-2 bg-white/70 backdrop-blur-sm border border-gray-200 rounded-full text-gray-700 hover:bg-white hover:shadow-md transition-all"
               >
                 {destination}
