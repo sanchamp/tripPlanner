@@ -44,12 +44,6 @@ const About: React.FC = () => {
       role: 'Data Scientist',
       image: '/public/image.png',
       bio: 'Data scientist specializing in machine learning and AI-powered recommendation systems for travel planning.'
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Head of Travel',
-      image: 'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'Travel enthusiast who has visited 80+ countries and specializes in creating authentic local experiences.'
     }
   ];
 
@@ -173,6 +167,7 @@ const About: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {team.map((member, index) => (
               <div key={index} className="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-6 text-center">
                 <img
