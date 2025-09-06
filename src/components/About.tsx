@@ -72,7 +72,6 @@ const About: React.FC = () => {
           </div>
         </div>
       </div>
-      </div>
 
       {/* Stats Section */}
       <div className="py-16 bg-white dark:bg-gray-900">
