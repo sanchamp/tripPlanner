@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Users, DollarSign, ArrowLeft, Clock, Star, Bed, Camera, Utensils, Car } from 'lucide-react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 interface TripPlannerProps {
   destination: string;
@@ -50,6 +52,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
   const [itinerary, setItinerary] = useState<DayItinerary[]>([]);
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState<'details' | 'preferences' | 'itinerary'>('details');
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 
   const interestOptions = [
     'Culture & History', 'Food & Dining', 'Nature & Outdoors', 'Shopping', 
@@ -155,6 +158,142 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
       case 'restaurant': return Utensils;
       case 'transport': return Car;
       default: return MapPin;
+    }
+  };
+
+  const downloadPDF = async () => {
+    setIsGeneratingPDF(true);
+    
+    try {
+      // Create a new PDF document
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 20;
+      let yPosition = margin;
+      
+      // Add title
+      pdf.setFontSize(24);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(`${destination} Travel Itinerary`, margin, yPosition);
+      yPosition += 15;
+      
+      // Add trip details
+      pdf.setFontSize(12);
+      pdf.setFont('helvetica', 'normal');
+      pdf.text(`Dates: ${tripDetails.startDate} - ${tripDetails.endDate}`, margin, yPosition);
+      yPosition += 8;
+      pdf.text(`Travelers: ${tripDetails.travelers}`, margin, yPosition);
+      yPosition += 8;
+      pdf.text(`Budget: ${tripDetails.budget}`, margin, yPosition);
+      yPosition += 15;
+      
+      // Add interests
+      pdf.setFontSize(14);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Selected Interests:', margin, yPosition);
+      yPosition += 8;
+      pdf.setFontSize(10);
+      pdf.setFont('helvetica', 'normal');
+      const interestsText = tripDetails.interests.join(', ');
+      const splitInterests = pdf.splitTextToSize(interestsText, pageWidth - 2 * margin);
+      pdf.text(splitInterests, margin, yPosition);
+      yPosition += splitInterests.length * 5 + 10;
+      
+      // Add itinerary days
+      itinerary.forEach((day, dayIndex) => {
+        // Check if we need a new page
+        if (yPosition > pageHeight - 60) {
+          pdf.addPage();
+          yPosition = margin;
+        }
+        
+        // Day header
+        pdf.setFontSize(16);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(`Day ${day.day} - ${day.date}`, margin, yPosition);
+        yPosition += 10;
+        
+        pdf.setFontSize(12);
+        pdf.text(`Daily Budget: ${day.totalCost}`, margin, yPosition);
+        yPosition += 15;
+        
+        // Activities
+        day.activities.forEach((activity, actIndex) => {
+          // Check if we need a new page
+          if (yPosition > pageHeight - 40) {
+            pdf.addPage();
+            yPosition = margin;
+          }
+          
+          pdf.setFontSize(12);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text(`${activity.time} - ${activity.name}`, margin + 5, yPosition);
+          yPosition += 8;
+          
+          pdf.setFontSize(10);
+          pdf.setFont('helvetica', 'normal');
+          pdf.text(`Duration: ${activity.duration} | Price: ${activity.price} | Rating: ${activity.rating}★`, margin + 5, yPosition);
+          yPosition += 6;
+          
+          const descriptionLines = pdf.splitTextToSize(activity.description, pageWidth - 2 * margin - 10);
+          pdf.text(descriptionLines, margin + 5, yPosition);
+          yPosition += descriptionLines.length * 4;
+          
+          if (activity.tips) {
+            pdf.setFont('helvetica', 'italic');
+            pdf.text(`Tip: ${activity.tips}`, margin + 5, yPosition);
+            yPosition += 6;
+          }
+          
+          yPosition += 5;
+        });
+        
+        // Accommodation
+        if (day.accommodation) {
+          if (yPosition > pageHeight - 30) {
+            pdf.addPage();
+            yPosition = margin;
+          }
+          
+          pdf.setFontSize(12);
+          pdf.setFont('helvetica', 'bold');
+          pdf.text(`Accommodation: ${day.accommodation.name}`, margin + 5, yPosition);
+          yPosition += 8;
+          
+          pdf.setFontSize(10);
+          pdf.setFont('helvetica', 'normal');
+          pdf.text(`${day.accommodation.type} | ${day.accommodation.price} | ${day.accommodation.rating}★`, margin + 5, yPosition);
+          yPosition += 6;
+          
+          const accommodationDesc = pdf.splitTextToSize(day.accommodation.description, pageWidth - 2 * margin - 10);
+          pdf.text(accommodationDesc, margin + 5, yPosition);
+          yPosition += accommodationDesc.length * 4;
+          
+          pdf.text(`Amenities: ${day.accommodation.amenities.join(', ')}`, margin + 5, yPosition);
+          yPosition += 10;
+        }
+        
+        yPosition += 10;
+      });
+      
+      // Add footer
+      const totalPages = pdf.internal.getNumberOfPages();
+      for (let i = 1; i <= totalPages; i++) {
+        pdf.setPage(i);
+        pdf.setFontSize(8);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text(`Generated by TRIPPING - Page ${i} of ${totalPages}`, margin, pageHeight - 10);
+      }
+      
+      // Save the PDF
+      pdf.save(`${destination.replace(/[^a-z0-9]/gi, '_').toLowerCase()}_itinerary.pdf`);
+      
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('There was an error generating the PDF. Please try again.');
+    } finally {
+      setIsGeneratingPDF(false);
     }
   };
 
@@ -483,8 +622,12 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                 <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
                   Book This Trip
                 </button>
-                <button className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium">
-                  Download PDF
+                <button 
+                  onClick={downloadPDF}
+                  disabled={isGeneratingPDF}
+                  className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isGeneratingPDF ? 'Generating PDF...' : 'Download PDF'}
                 </button>
               </div>
             </div>
