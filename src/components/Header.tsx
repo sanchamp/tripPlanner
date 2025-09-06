@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
+import CurrencySelector from './CurrencySelector';
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -59,6 +60,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation,
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
+            <CurrencySelector />
             <button 
               onClick={() => onNavigation('signin')}
               className={`transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}
@@ -110,6 +112,9 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen, onNavigation,
               About
             </button>
             <div className="border-t border-gray-200 pt-2 mt-2">
+              <div className="px-3 py-2">
+                <CurrencySelector />
+              </div>
               <button 
                 onClick={() => onNavigation('signin')}
                 className={`block w-full text-left px-3 py-2 transition-colors ${isActive('signin') ? 'text-blue-600 font-medium' : 'text-gray-700 hover:text-blue-600'}`}

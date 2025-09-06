@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Calendar, MapPin, Users, Clock, Edit, Trash2, Download, Plus } from 'lucide-react';
+import { useCurrency } from '../contexts/CurrencyContext';
 
 interface Trip {
   id: string;
@@ -14,6 +15,7 @@ interface Trip {
 }
 
 const MyTrips: React.FC = () => {
+  const { formatPrice } = useCurrency();
   const [activeTab, setActiveTab] = useState<'all' | 'planned' | 'ongoing' | 'completed'>('all');
 
   // Mock data - in a real app, this would come from an API or database
@@ -26,7 +28,7 @@ const MyTrips: React.FC = () => {
       travelers: 2,
       status: 'planned',
       image: 'https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&w=400',
-      totalCost: '$2,450',
+      totalCost: formatPrice(2450),
       activities: 12
     },
     {
@@ -37,7 +39,7 @@ const MyTrips: React.FC = () => {
       travelers: 1,
       status: 'completed',
       image: 'https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg?auto=compress&cs=tinysrgb&w=400',
-      totalCost: '$1,890',
+      totalCost: formatPrice(1890),
       activities: 8
     },
     {
@@ -48,7 +50,7 @@ const MyTrips: React.FC = () => {
       travelers: 4,
       status: 'ongoing',
       image: 'https://images.pexels.com/photos/2474690/pexels-photo-2474690.jpeg?auto=compress&cs=tinysrgb&w=400',
-      totalCost: '$3,200',
+      totalCost: formatPrice(3200),
       activities: 15
     },
     {
@@ -59,7 +61,7 @@ const MyTrips: React.FC = () => {
       travelers: 3,
       status: 'planned',
       image: 'https://images.pexels.com/photos/290386/pexels-photo-290386.jpeg?auto=compress&cs=tinysrgb&w=400',
-      totalCost: '$1,650',
+      totalCost: formatPrice(1650),
       activities: 10
     }
   ];

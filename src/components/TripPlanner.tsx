@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calendar, MapPin, Users, DollarSign, ArrowLeft, Clock, Star, Bed, Camera, Utensils, Car } from 'lucide-react';
+import { useCurrency } from '../contexts/CurrencyContext';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -41,6 +42,7 @@ interface DayItinerary {
 }
 
 const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
+  const { formatPrice } = useCurrency();
   const [tripDetails, setTripDetails] = useState({
     startDate: '',
     endDate: '',
@@ -91,7 +93,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
             time: i === 0 ? '10:00 AM' : '9:00 AM',
             duration: i === 0 ? '2 hours' : '3 hours',
             description: i === 0 ? 'Private transfer from airport to hotel' : 'Start your day exploring the local neighborhood',
-            price: i === 0 ? '$45' : '$25',
+            price: formatPrice(i === 0 ? 45 : 25),
             rating: 4.5,
             image: 'https://images.pexels.com/photos/2506923/pexels-photo-2506923.jpeg?auto=compress&cs=tinysrgb&w=400',
             tips: i === 0 ? 'Keep your passport and documents handy' : 'Wear comfortable walking shoes'
@@ -103,7 +105,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
             time: '1:00 PM',
             duration: '2.5 hours',
             description: 'Visit the most iconic landmark with guided tour',
-            price: '$35',
+            price: formatPrice(35),
             rating: 4.7,
             image: 'https://images.pexels.com/photos/1388030/pexels-photo-1388030.jpeg?auto=compress&cs=tinysrgb&w=400',
             tips: 'Book tickets in advance to skip the line'
@@ -115,7 +117,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
             time: '7:00 PM',
             duration: '2 hours',
             description: 'Authentic local dining experience at a highly-rated restaurant',
-            price: '$65',
+            price: formatPrice(65),
             rating: 4.8,
             image: 'https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=400',
             tips: 'Try the chef\'s special menu for the best experience'
@@ -127,7 +129,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
           name: `${destination} Grand Hotel`,
           type: 'Luxury Hotel',
           rating: 4.6,
-          price: '$180/night',
+          price: `${formatPrice(180)}/night`,
           description: 'Centrally located luxury hotel with modern amenities',
           image: 'https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=400',
           amenities: ['Free WiFi', 'Pool', 'Gym', 'Spa', 'Restaurant', 'Room Service']
@@ -143,7 +145,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
           }),
           activities: dayActivities,
           accommodation: accommodation,
-          totalCost: '$245'
+          totalCost: formatPrice(245)
         });
       }
       
@@ -474,7 +476,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
               <div className="text-right">
                 <p className="text-sm text-gray-500">Estimated Total Cost</p>
                 <p className="text-2xl font-bold text-green-600">
-                  ${(itinerary.length * 245).toLocaleString()}
+                  {formatPrice(itinerary.length * 245)}
                 </p>
               </div>
             )}
