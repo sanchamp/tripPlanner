@@ -22,6 +22,7 @@ const CurrencySelector: React.FC = () => {
         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
           {selectedCurrency.code}
         </span>
+        </span>
         <ChevronDown className={`h-4 w-4 text-gray-600 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -31,6 +32,7 @@ const CurrencySelector: React.FC = () => {
             <div className="text-xs font-medium text-gray-500 px-3 py-2 border-b border-gray-100">
             <div className="text-xs font-medium text-gray-500 dark:text-gray-400 px-3 py-2 border-b border-gray-100 dark:border-gray-700">
               Select Currency
+            </div>
             </div>
             <div className="max-h-60 overflow-y-auto">
               {currencies.map((currency) => (
