@@ -56,7 +56,6 @@ const About: React.FC = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-teal-50">
       <div className="bg-gradient-to-br from-blue-50 via-purple-50 to-teal-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="text-center">
@@ -72,6 +71,7 @@ const About: React.FC = () => {
             </p>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Stats Section */}
