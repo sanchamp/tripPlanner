@@ -53,11 +53,9 @@ const Features: React.FC = () => {
                   <feature.icon className={`h-8 w-8 ${feature.color}`} />
                 </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {feature.description}
               </p>
@@ -65,13 +63,8 @@ const Features: React.FC = () => {
           ))}
         </div>
       </div>
-    )
-    )
-    }
     </section>
   );
 };
 
 export default Features;
-  )
-}
