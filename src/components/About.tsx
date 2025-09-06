@@ -34,16 +34,16 @@ const About: React.FC = () => {
 
   const team = [
     {
-      name: 'Sarah Johnson',
-      role: 'CEO & Founder',
-      image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'Former travel industry executive with 15+ years of experience in creating exceptional travel experiences.'
+      name: 'Mithilesh',
+      role: 'Data Architect',
+      image: '/public/image.png',
+      bio: 'Expert data architect with extensive experience in building scalable data solutions and analytics platforms.'
     },
     {
-      name: 'Michael Chen',
-      role: 'CTO',
-      image: 'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=300',
-      bio: 'AI and machine learning expert who previously worked at leading tech companies building recommendation systems.'
+      name: 'Sandeep',
+      role: 'Data Scientist',
+      image: '/public/image.png',
+      bio: 'Data scientist specializing in machine learning and AI-powered recommendation systems for travel planning.'
     },
     {
       name: 'Emily Rodriguez',
