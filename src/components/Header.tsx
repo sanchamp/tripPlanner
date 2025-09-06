@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Menu, X } from 'lucide-react';
+import { Mountain, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   onMenuToggle: () => void;
@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle, isMenuOpen }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-2">
-            <User className="h-8 w-8 text-blue-600" />
+            <Mountain className="h-8 w-8 text-blue-600" />
             <span className="text-xl font-bold text-gray-900">TRIPPING</span>
           </div>
           
