@@ -17,7 +17,7 @@ const CurrencySelector: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-3 py-2 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
       >
-        <DollarSign className="h-4 w-4 text-gray-600" />
+        <span className="text-sm font-medium text-gray-600">{selectedCurrency.symbol}</span>
         <span className="text-sm font-medium text-gray-700">
           {selectedCurrency.code}
         </span>
