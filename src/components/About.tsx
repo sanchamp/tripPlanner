@@ -36,13 +36,13 @@ const About: React.FC = () => {
     {
       name: 'Mithilesh',
       role: 'Data Architect',
-      image: '/public/image.png',
+      image: '/public/image copy.png',
       bio: 'Expert data architect with extensive experience in building scalable data solutions and analytics platforms.'
     },
     {
       name: 'Sandeep',
       role: 'Data Scientist',
-      image: '/public/image.png',
+      image: '/public/image copy.png',
       bio: 'Data scientist specializing in machine learning and AI-powered recommendation systems for travel planning.'
     }
   ];
