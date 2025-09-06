@@ -91,7 +91,7 @@ const Destinations: React.FC = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
@@ -109,7 +109,7 @@ const Destinations: React.FC = () => {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search destinations..."
-                  className="w-full px-6 py-4 text-lg rounded-full text-gray-900 pl-14 focus:ring-2 focus:ring-white focus:outline-none"
+                  className="w-full px-6 py-4 text-lg rounded-full text-gray-900 dark:text-white dark:bg-gray-800 pl-14 focus:ring-2 focus:ring-white focus:outline-none"
                 />
                 <Search className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               </div>
@@ -128,7 +128,7 @@ const Destinations: React.FC = () => {
               className={`px-6 py-3 rounded-full font-medium transition-all ${
                 selectedCategory === category.id
                   ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600'
               }`}
             >
               {category.name}
@@ -141,7 +141,7 @@ const Destinations: React.FC = () => {
           {filteredDestinations.map((destination) => (
             <div
               key={destination.id}
-              className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow group"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow group"
             >
               <div className="relative">
                 <img
@@ -159,28 +159,28 @@ const Destinations: React.FC = () => {
               
               <div className="p-6">
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                     {destination.name}
                   </h3>
-                  <div className="flex items-center text-sm text-gray-500">
+                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                     <Clock className="h-4 w-4 mr-1" />
                     {destination.duration}
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">
                   {destination.description}
                 </p>
                 
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center text-sm text-gray-500">
+                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                     <Users className="h-4 w-4 mr-1" />
                     {destination.reviews.toLocaleString()} reviews
                   </div>
                 </div>
                 
                 <div className="mb-4">
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">Top Highlights:</h4>
+                  <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-2">Top Highlights:</h4>
                   <div className="flex flex-wrap gap-2">
                     {destination.highlights.slice(0, 3).map((highlight, index) => (
                       <span
@@ -204,8 +204,8 @@ const Destinations: React.FC = () => {
         {filteredDestinations.length === 0 && (
           <div className="text-center py-12">
             <MapPin className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">No destinations found</h3>
-            <p className="text-gray-600">Try adjusting your search or filter criteria</p>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">No destinations found</h3>
+            <p className="text-gray-600 dark:text-gray-300">Try adjusting your search or filter criteria</p>
           </div>
         )}
       </div>

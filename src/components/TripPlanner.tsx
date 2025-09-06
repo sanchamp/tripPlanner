@@ -305,30 +305,30 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
 
   if (step === 'details') {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="bg-white border-b">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <button
               onClick={onBack}
-              className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+              className="flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-4"
             >
               <ArrowLeft className="h-5 w-5 mr-2" />
               Back to Search
             </button>
             
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
               Plan Your Trip to {destination}
             </h1>
-            <p className="text-gray-600 mt-2">Let's start with some basic details about your trip</p>
+            <p className="text-gray-600 dark:text-gray-300 mt-2">Let's start with some basic details about your trip</p>
           </div>
         </div>
 
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-white rounded-xl shadow-sm p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8">
             <div className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     <Calendar className="inline h-4 w-4 mr-1" />
                     Start Date
                   </label>
@@ -336,12 +336,12 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                     type="date"
                     value={tripDetails.startDate}
                     onChange={(e) => setTripDetails({...tripDetails, startDate: e.target.value})}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     <Calendar className="inline h-4 w-4 mr-1" />
                     End Date
                   </label>
@@ -349,21 +349,21 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                     type="date"
                     value={tripDetails.endDate}
                     onChange={(e) => setTripDetails({...tripDetails, endDate: e.target.value})}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   />
                 </div>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     <Users className="inline h-4 w-4 mr-1" />
                     Number of Travelers
                   </label>
                   <select
                     value={tripDetails.travelers}
                     onChange={(e) => setTripDetails({...tripDetails, travelers: parseInt(e.target.value)})}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value={1}>1 Traveler</option>
                     <option value={2}>2 Travelers</option>
@@ -373,13 +373,13 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     Budget Range
                   </label>
                   <select
                     value={tripDetails.budget}
                     onChange={(e) => setTripDetails({...tripDetails, budget: e.target.value})}
-                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   >
                     <option value="budget">Budget ({formatPrice(50)}-{formatPrice(100)}/day)</option>
                     <option value="medium">Medium ({formatPrice(100)}-{formatPrice(300)}/day)</option>
@@ -404,26 +404,26 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
 
   if (step === 'preferences') {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <div className="bg-white border-b">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <button
               onClick={() => setStep('details')}
-              className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+              className="flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-4"
             >
               <ArrowLeft className="h-5 w-5 mr-2" />
               Back to Details
             </button>
             
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
               What interests you?
             </h1>
-            <p className="text-gray-600 mt-2">Select your interests to get personalized recommendations</p>
+            <p className="text-gray-600 dark:text-gray-300 mt-2">Select your interests to get personalized recommendations</p>
           </div>
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="bg-white rounded-xl shadow-sm p-8">
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8">
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
               {interestOptions.map((interest) => (
                 <button
@@ -432,7 +432,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                   className={`p-4 rounded-lg border-2 transition-all text-sm font-medium ${
                     tripDetails.interests.includes(interest)
                       ? 'border-blue-500 bg-blue-50 text-blue-700'
-                      : 'border-gray-200 hover:border-gray-300 text-gray-700'
+                      : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700'
                   }`}
                 >
                   {interest}
@@ -454,12 +454,12 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button
             onClick={() => setStep('preferences')}
-            className="flex items-center text-gray-600 hover:text-gray-900 mb-4"
+            className="flex items-center text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 mb-4"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back to Preferences
@@ -467,17 +467,17 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
           
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                 Your {destination} Itinerary
               </h1>
-              <p className="text-gray-600 mt-1">
+              <p className="text-gray-600 dark:text-gray-300 mt-1">
                 {tripDetails.startDate} - {tripDetails.endDate} • {tripDetails.travelers} travelers
               </p>
             </div>
             
             {!loading && (
               <div className="text-right">
-                <p className="text-sm text-gray-500">Estimated Total Cost</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Estimated Total Cost</p>
                 <p className="text-2xl font-bold text-green-600">
                   {formatPrice(itinerary.length * 330)}
                 </p>
@@ -491,15 +491,15 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
         {loading ? (
           <div className="flex flex-col items-center justify-center py-20">
             <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-600 mb-4"></div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Creating Your Perfect Itinerary</h3>
-            <p className="text-gray-600 text-center max-w-md">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Creating Your Perfect Itinerary</h3>
+            <p className="text-gray-600 dark:text-gray-300 text-center max-w-md">
               Our AI is analyzing your preferences and creating a personalized day-by-day plan with the best recommendations for {destination}
             </p>
           </div>
         ) : (
           <div className="space-y-8">
             {itinerary.map((day) => (
-              <div key={day.day} className="bg-white rounded-xl shadow-sm overflow-hidden">
+              <div key={day.day} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden">
                 <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -518,7 +518,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                     {day.activities.map((activity, index) => {
                       const IconComponent = getActivityIcon(activity.type);
                       return (
-                        <div key={activity.id} className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                        <div key={activity.id} className="flex items-start space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
                           <div className="flex-shrink-0">
                             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                               <IconComponent className="h-6 w-6 text-blue-600" />
@@ -530,15 +530,15 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                               <div className="flex-1">
                                 <div className="flex items-center space-x-2 mb-1">
                                   <Clock className="h-4 w-4 text-gray-500" />
-                                  <span className="text-sm font-medium text-gray-900">{activity.time}</span>
-                                  <span className="text-sm text-gray-500">({activity.duration})</span>
+                                  <span className="text-sm font-medium text-gray-900 dark:text-white">{activity.time}</span>
+                                  <span className="text-sm text-gray-500 dark:text-gray-400">({activity.duration})</span>
                                 </div>
                                 
-                                <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                                   {activity.name}
                                 </h3>
                                 
-                                <p className="text-gray-600 mb-2">{activity.description}</p>
+                                <p className="text-gray-600 dark:text-gray-300 mb-2">{activity.description}</p>
                                 
                                 <div className="flex items-center space-x-4 text-sm">
                                   <div className="flex items-center">
@@ -549,7 +549,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                                 </div>
                                 
                                 {activity.tips && (
-                                  <div className="mt-2 p-2 bg-yellow-50 border border-yellow-200 rounded text-sm text-yellow-800">
+                                  <div className="mt-2 p-2 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-700 rounded text-sm text-yellow-800 dark:text-yellow-200">
                                     <strong>Tip:</strong> {activity.tips}
                                   </div>
                                 )}
@@ -568,7 +568,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                   </div>
 
                   {day.accommodation && (
-                    <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded-lg">
                       <div className="flex items-start space-x-4">
                         <div className="flex-shrink-0">
                           <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
@@ -579,10 +579,10 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                         <div className="flex-1">
                           <div className="flex items-start justify-between">
                             <div className="flex-1">
-                              <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                                 {day.accommodation.name}
                               </h3>
-                              <p className="text-gray-600 mb-2">{day.accommodation.description}</p>
+                              <p className="text-gray-600 dark:text-gray-300 mb-2">{day.accommodation.description}</p>
                               
                               <div className="flex items-center space-x-4 text-sm mb-2">
                                 <div className="flex items-center">
@@ -596,7 +596,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                                 {day.accommodation.amenities.map((amenity, i) => (
                                   <span
                                     key={i}
-                                    className="px-2 py-1 bg-white text-xs text-gray-600 rounded border"
+                                    className="px-2 py-1 bg-white dark:bg-gray-600 text-xs text-gray-600 dark:text-gray-300 rounded border dark:border-gray-500"
                                   >
                                     {amenity}
                                   </span>
@@ -618,9 +618,9 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
               </div>
             ))}
 
-            <div className="bg-white rounded-xl shadow-sm p-6 text-center">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ready to book your trip?</h3>
-              <p className="text-gray-600 mb-4">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6 text-center">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Ready to book your trip?</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-4">
                 Your personalized itinerary is ready! You can now proceed to book your accommodations and activities.
               </p>
               <div className="flex justify-center space-x-4">
@@ -630,7 +630,7 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                 <button 
                   onClick={downloadPDF}
                   disabled={isGeneratingPDF}
-                  className="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isGeneratingPDF ? 'Generating PDF...' : 'Download PDF'}
                 </button>

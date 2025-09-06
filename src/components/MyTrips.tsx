@@ -103,13 +103,13 @@ const MyTrips: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="bg-white border-b">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">My Trips</h1>
-              <p className="text-gray-600 mt-2">Manage and track all your travel adventures</p>
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">My Trips</h1>
+              <p className="text-gray-600 dark:text-gray-300 mt-2">Manage and track all your travel adventures</p>
             </div>
             <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center">
               <Plus className="h-5 w-5 mr-2" />
@@ -121,7 +121,7 @@ const MyTrips: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Tab Navigation */}
-        <div className="flex space-x-1 bg-gray-100 p-1 rounded-lg mb-8 w-fit">
+        <div className="flex space-x-1 bg-gray-100 dark:bg-gray-800 p-1 rounded-lg mb-8 w-fit">
           {[
             { id: 'all', label: 'All Trips', count: trips.length },
             { id: 'planned', label: 'Planned', count: trips.filter(t => t.status === 'planned').length },
@@ -134,7 +134,7 @@ const MyTrips: React.FC = () => {
               className={`px-4 py-2 rounded-md font-medium text-sm transition-colors ${
                 activeTab === tab.id
                   ? 'bg-white text-blue-600 shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200'
               }`}
             >
               {tab.label} ({tab.count})
@@ -148,7 +148,7 @@ const MyTrips: React.FC = () => {
             {filteredTrips.map((trip) => (
               <div
                 key={trip.id}
-                className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                className="bg-white dark:bg-gray-800 rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
               >
                 <div className="relative">
                   <img
@@ -164,27 +164,27 @@ const MyTrips: React.FC = () => {
                 </div>
                 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                     {trip.destination}
                   </h3>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                       <Calendar className="h-4 w-4 mr-2" />
                       {formatDate(trip.startDate)} - {formatDate(trip.endDate)}
                     </div>
                     
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                       <Clock className="h-4 w-4 mr-2" />
                       {getDuration(trip.startDate, trip.endDate)}
                     </div>
                     
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                       <Users className="h-4 w-4 mr-2" />
                       {trip.travelers} {trip.travelers === 1 ? 'traveler' : 'travelers'}
                     </div>
                     
-                    <div className="flex items-center text-sm text-gray-600">
+                    <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                       <MapPin className="h-4 w-4 mr-2" />
                       {trip.activities} activities planned
                     </div>
@@ -200,13 +200,13 @@ const MyTrips: React.FC = () => {
                     <button className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
                       View Details
                     </button>
-                    <button className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
+                    <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-blue-600 transition-colors">
                       <Edit className="h-4 w-4" />
                     </button>
-                    <button className="p-2 text-gray-600 hover:text-green-600 transition-colors">
+                    <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-green-600 transition-colors">
                       <Download className="h-4 w-4" />
                     </button>
-                    <button className="p-2 text-gray-600 hover:text-red-600 transition-colors">
+                    <button className="p-2 text-gray-600 dark:text-gray-400 hover:text-red-600 transition-colors">
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </div>
@@ -217,10 +217,10 @@ const MyTrips: React.FC = () => {
         ) : (
           <div className="text-center py-12">
             <MapPin className="h-16 w-16 text-gray-300 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
               No {activeTab !== 'all' ? activeTab : ''} trips found
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
               {activeTab === 'all' 
                 ? "You haven't planned any trips yet. Start your adventure today!"
                 : `You don't have any ${activeTab} trips at the moment.`
