@@ -8,7 +8,17 @@ const CurrencySelector: React.FC = () => {
 
   const handleCurrencySelect = (currency: Currency) => {
     setSelectedCurrency(currency);
-    setIsOpen(false);
+    
+    // Handle different currency formatting
+    if (selectedCurrency.code === 'INR') {
+      return `₹${convertedPrice}`;
+    } else if (selectedCurrency.code === 'JPY') {
+      return `¥${Math.round(parseFloat(convertedPrice))}`;
+    } else if (selectedCurrency.code === 'CNY') {
+      return `¥${convertedPrice}`;
+    } else {
+      return `${selectedCurrency.symbol}${convertedPrice}`;
+    }
   };
 
   return (
