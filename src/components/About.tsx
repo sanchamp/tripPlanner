@@ -182,6 +182,11 @@ const About: React.FC = () => {
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
                   {member.bio}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="flex justify-center">
           <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-8 max-w-2xl">
             <img
