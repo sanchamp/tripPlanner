@@ -370,7 +370,6 @@ const TripPlanner: React.FC<TripPlannerProps> = ({ destination, onBack }) => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    <DollarSign className="inline h-4 w-4 mr-1" />
                     Budget Range
                   </label>
                   <select
