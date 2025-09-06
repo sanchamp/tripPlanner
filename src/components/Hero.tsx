@@ -31,7 +31,7 @@ const Hero: React.FC<HeroProps> = ({ onStartPlanning }) => {
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             Plan Your Perfect Trip with{' '}
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              AI Magic
+              TRIPPING
             </span>
           </h1>
           
