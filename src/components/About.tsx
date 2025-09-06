@@ -182,25 +182,25 @@ const About: React.FC = () => {
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
                   {member.bio}
-                </p>
-              </div>
-            ))}
+        <div className="flex justify-center">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow-sm p-8 max-w-2xl">
+            <img
+              src="/public/image copy copy.png"
+              alt="Our Team - Mithilesh and Sandeep"
+              className="w-full rounded-lg mb-6"
+            />
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                Our Core Team
+              </h3>
+              <p className="text-gray-600 dark:text-gray-400">
+                <strong>Mithilesh</strong> - Data Architect with extensive experience in building scalable data solutions and analytics platforms.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 mt-2">
+                <strong>Sandeep</strong> - Data Scientist specializing in machine learning and AI-powered recommendation systems for travel planning.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white dark:text-white mb-4">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of travelers who trust TRIPPING to plan their perfect adventures.
-          </p>
-          <button className="bg-white text-blue-600 px-8 py-4 rounded-lg hover:bg-gray-50 transition-colors font-semibold text-lg">
-            Start Planning Today
-          </button>
         </div>
       </div>
     </div>
